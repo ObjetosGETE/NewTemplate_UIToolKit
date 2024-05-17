@@ -4,7 +4,12 @@
         <engine:VisualElement name="Stopwatch" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Image/Cronometro_imagem.png?fileID=2800000&amp;guid=e0dc009b7c3e200498083238813e8345&amp;type=3#Cronometro_imagem&quot;);">
             <engine:Label text="00:00:00" name="DisplayStopWatch" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/digital-7.ttf?fileID=12800000&amp;guid=3622332543c5f3b4c891e5f25e9438e9&amp;type=3#digital-7&quot;); -unity-text-align: middle-center;" />
         </engine:VisualElement>
-        <engine:Button text="Parar" name="ButtonDisplayStopWatch" style="margin-top: 5%; width: 7%; height: 7%; font-size: 25px;" />
-        <engine:VisualElement name="Character" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Image/character.png?fileID=2800000&amp;guid=0d17c831c2571f24a9cefaa251bc183e&amp;type=3#character&quot;); -unity-background-scale-mode: scale-to-fit; width: 10%; height: 30%; margin-top: 10px; display: flex; visibility: visible; opacity: 1;" />
+        <engine:VisualElement name="containerButton" style="flex-grow: 0; flex-direction: row; width: 100%; height: 20%; align-items: center; justify-content: center;">
+            <engine:Button text="Pausar" name="pauseButton" style="margin-top: 0; width: 10%; height: 25%; font-size: 25px; margin-right: 10px;" />
+            <engine:Button text="Reiniciar" name="unPauseButton" style="margin-top: 0; width: 10%; height: 25%; font-size: 25px; margin-right: 10px;" />
+            <engine:Button text="Zerar" name="restartButton" style="margin-top: 0; width: 10%; height: 25%; font-size: 25px; margin-right: 10px;" />
+            <engine:Button text="Parar" name="stopButton" style="margin-top: 0; width: 10%; height: 25%; font-size: 25px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="character" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Image/character.png?fileID=2800000&amp;guid=0d17c831c2571f24a9cefaa251bc183e&amp;type=3#character&quot;); -unity-background-scale-mode: scale-to-fit; width: 10%; height: 30%; margin-top: 10px; display: flex; visibility: visible; opacity: 1;" />
     </engine:VisualElement>
 </engine:UXML>

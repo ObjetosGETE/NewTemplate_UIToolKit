@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DisplayStopWatch : MonoBehaviour
+public class DisplayStopWatch : MonoBehaviour, IEventListener
 {
     private Label displayStopWatch;
     private float timeElapsed = 0f;
-    private bool timerRunning = false; // Inicializa como false para evitar execução sem controle
+    private bool timerRunning = false;
 
     void Awake()
     {
@@ -22,14 +22,20 @@ public class DisplayStopWatch : MonoBehaviour
 
     void OnEnable()
     {
-        EventsUI.UIEventsManager.Instance.OnSendMessage += ReceiveMessage;
-        StartTimer(); // Inicia a corrotina apenas se tudo estiver configurado corretamente
+        StartTimer();
+        EventManager.Subscribe("PausarCronometro", this);
+        EventManager.Subscribe("DespausarCronometro", this);
+        EventManager.Subscribe("ReiniciarCronometro", this);
+        EventManager.Subscribe("PararCronometro", this);
     }
 
     void OnDisable()
     {
-        StopTimer(); // Para a corrotina
-        EventsUI.UIEventsManager.Instance.OnSendMessage -= ReceiveMessage;
+        EventManager.Unsubscribe("PausarCronometro", this);
+        EventManager.Unsubscribe("DespausarCronometro", this);
+        EventManager.Unsubscribe("ReiniciarCronometro", this);
+        EventManager.Unsubscribe("PararCronometro", this);
+        StopTimer();
     }
 
     private void StartTimer()
@@ -41,12 +47,12 @@ public class DisplayStopWatch : MonoBehaviour
     private void StopTimer()
     {
         timerRunning = false;
-        StopCoroutine(UpdateTimer()); // Garante que a corrotina seja interrompida corretamente
+        StopCoroutine(UpdateTimer());
     }
 
     private IEnumerator UpdateTimer()
     {
-        while (timerRunning) // Ajusta a condição de loop para depender do estado 'timerRunning'
+        while (timerRunning)
         {
             timeElapsed += Time.deltaTime;
             UpdateLabel((int)(timeElapsed / 3600), (int)((timeElapsed / 60) % 60), (int)(timeElapsed % 60));
@@ -59,24 +65,29 @@ public class DisplayStopWatch : MonoBehaviour
         displayStopWatch.text = $"{hours:00}:{minutes:00}:{seconds:00}";
     }
 
-    void ReceiveMessage(EventsUI.UIEventsManager.MessageData data)
+    public void OnEventReceived(Event eventData)
     {
-        switch (data.Message)
+        switch (eventData.EventType)
         {
-            case "Iniciar Cronometro":
+            case "DespausarCronometro":
                 StartTimer();
                 break;
-            case "Parar Cronometro":
+            case "PausarCronometro":
                 StopTimer();
                 break;
-            case "Reiniciar Cronometro":
+            case "ReiniciarCronometro":
                 timeElapsed = 0;
                 UpdateLabel(0, 0, 0);
                 if (!timerRunning) StartTimer();
                 break;
+            case "PararCronometro":
+                StopTimer();
+                timeElapsed = 0;
+                break;
         }
     }
 }
+
 
 
 

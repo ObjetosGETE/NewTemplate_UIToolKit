@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IEventListener
 {
     private VisualElement character;
     void Awake()
     {
         var uiDocument = GetComponent<UIDocument>();
-        character = uiDocument.rootVisualElement.Q<VisualElement>("Character");
+        character = uiDocument.rootVisualElement.Q<VisualElement>("character");
         
 
         if (character == null)
@@ -18,22 +18,35 @@ public class Character : MonoBehaviour
     }
     void OnEnable()
     {
-        EventsUI.UIEventsManager.Instance.OnSendMessage += ReceiveMessage;
+        EventManager.Subscribe("PausarCronometro", this);
+        EventManager.Subscribe("DespausarCronometro", this);
+        EventManager.Subscribe("ReiniciarCronometro", this);
+        EventManager.Subscribe("PararCronometro", this);
     }
 
     void OnDisable()
     {
-        EventsUI.UIEventsManager.Instance.OnSendMessage -= ReceiveMessage;
+        EventManager.Unsubscribe("PausarCronometro", this);
+        EventManager.Unsubscribe("DespausarCronometro", this);
+        EventManager.Unsubscribe("ReiniciarCronometro", this);
+        EventManager.Unsubscribe("PararCronometro", this);
+        
     }
 
-    void ReceiveMessage(EventsUI.UIEventsManager.MessageData data)
+    public void OnEventReceived(Event eventData)
     {
-        switch (data.Message)
+        switch (eventData.EventType)
         {
-            case "Mostrar Personagem":
+            case "DespausarCronometro":
                 character.style.display = DisplayStyle.Flex;
                 break;
-            case "Ocultar Personagem":
+            case "PausarCronometro":
+                character.style.display = DisplayStyle.None;
+                break;
+            case "ReiniciarCronometro":
+                character.style.display = DisplayStyle.Flex;
+                break;
+            case "PararCronometro":
                 character.style.display = DisplayStyle.None;
                 break;
         }

@@ -1,0 +1,25 @@
+Button:hover {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-circ;
+    scale: 1.05 1.05;
+}
+
+Button:active {
+    scale: 1 1;
+}
+
+.graphicmenu_default {
+    flex-grow: 1;
+    position: absolute;
+    background-image: url("project://database/Assets/Image/Config/menu_intro.png?fileID=2800000&guid=3b89999199df2c643aa22a9ba5f570a9&type=3#menu_intro");
+    height: 80%;
+    width: 70%;
+    translate: 0 -55px;
+    transition-duration: 0.7s;
+}
+
+.graphicmenu_hide {
+    translate: 0 -1175px;
+    opacity: 0;
+    transition-duration: 0.7s;
+}

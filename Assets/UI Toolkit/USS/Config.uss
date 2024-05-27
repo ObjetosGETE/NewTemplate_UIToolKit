@@ -23,3 +23,22 @@ Button:active {
     opacity: 0;
     transition-duration: 0.7s;
 }
+
+#unity-checkmark {
+    background-color: rgb(241, 161, 72);
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-left-color: rgb(132, 56, 21);
+    border-right-color: rgb(132, 56, 21);
+    border-top-color: rgb(132, 56, 21);
+    border-bottom-color: rgb(132, 56, 21);
+}
+
+/* .custom-toggle .unity-toggle__input:checked {
+    background-image: url("project://database/Assets/Image/Config/ico_box_ativo.png?fileID=21300000&guid=8075360dbe57a2b4789e2d95df6be0eb&type=3#ico_box_ativo");
+    background-color: rgb(76, 175, 80);
+} */

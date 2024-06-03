@@ -19,7 +19,7 @@
                 <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%;">
                     <engine:Label text="QUALIDADE GRÁFICA" style="flex-direction: row; flex-grow: 1; -unity-text-align: middle-left; font-size: 40px; color: rgb(114, 47, 15);" />
                 </engine:VisualElement>
-                <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; justify-content: center;">
+                <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 95%; height: 16.66%; justify-content: center; margin-top: -30px;">
                     <engine:Toggle label="Baixa" name="togglelowquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
                     <engine:Toggle label="Media" name="togglemediumquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
                     <engine:Toggle label="Alta" name="togglehighquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
@@ -27,20 +27,22 @@
                 <engine:VisualElement style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; margin-bottom: 0; margin-top: 24px;">
                     <engine:Label text="DALTONISMO" name="Label" style="flex-direction: row; flex-grow: 1; -unity-text-align: middle-left; font-size: 40px; color: rgb(114, 47, 15);" />
                 </engine:VisualElement>
-                <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; justify-content: center;">
-                    <engine:Toggle label="Desligado" name="daltonismo_Off" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Protanomia" name="daltonismo_Protanomia" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Protanomaly" name="daltonismo_Protanomaly" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                </engine:VisualElement>
-                <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; justify-content: center;">
-                    <engine:Toggle label="Deuteranopia" name="daltonismo_deuteranopia" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Deuteranomaly" name="daltonismo_deuteranomaly" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Tritanopia" name="daltonismo_tritanopia" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                </engine:VisualElement>
-                <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; justify-content: center;">
-                    <engine:Toggle label="Tritanomaly" name="daltonismo_tritanomaly" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Achromatopsia" name="daltonismo_achromatopsia" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
-                    <engine:Toggle label="Achromatomaly" name="daltonismo_achromatomaly" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
+                <engine:VisualElement name="VisualElement" style="flex-grow: 1; height: 50.02%; width: 100%; flex-direction: row; margin-top: -30px;">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Desligado" name="deslogado" class="item_daltonismo" />
+                        <engine:Toggle label="Deuteranopia" name="deuteranopia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Tritanomaly" name="tritanomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Protanomia" name="protanomia" class="item_daltonismo" />
+                        <engine:Toggle label="Deuteranomaly" name="deuteranomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Achromatopsia" name="achromatopsia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Protanomaly" name="protanomaly" class="item_daltonismo" />
+                        <engine:Toggle label="Tritanopia" name="tritanopia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Achromatomaly" name="achromatomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="panelbutton" style="flex-grow: 0; height: 170px; width: 100%; translate: 0 76px; flex-direction: row; justify-content: center; align-self: auto;">

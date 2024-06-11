@@ -1,0 +1,44 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/Config.uss?fileID=7433441132597879392&amp;guid=836e8afe32ea633489b1d40fd9c123d9&amp;type=3#Config" />
+    <engine:VisualElement name="container" style="flex-grow: 1; background-image: none; -unity-background-scale-mode: stretch-to-fill; justify-content: center; align-self: auto; align-items: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Berlin%20Sans%20FB%20Demi%20Bold.ttf?fileID=12800000&amp;guid=280102b7e6c1c1441a19c76544a242df&amp;type=3#Berlin Sans FB Demi Bold&quot;); display: flex;">
+        <engine:VisualElement name="graphicmenu" class="graphicmenu_default" style="align-items: center;">
+            <engine:VisualElement name="title" style="flex-grow: 0; height: 25%; width: 42%; justify-content: center; align-items: center;">
+                <engine:Label text="Gráficos" style="width: 100%; height: 100%; align-items: center; justify-content: center; -unity-text-align: middle-center; font-size: 70px; color: rgb(81, 40, 18); -unity-font-style: bold; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0);" />
+            </engine:VisualElement>
+            <engine:VisualElement name="bodygraphicmenu" style="flex-grow: 0; height: 85%; width: 90%; justify-content: center; align-items: center;">
+                <engine:VisualElement name="container_title_01" style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%;">
+                    <engine:Label text="QUALIDADE GRÁFICA" style="flex-direction: row; flex-grow: 1; -unity-text-align: middle-left; font-size: 40px; color: rgb(114, 47, 15);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="container_qualidade_grafica" style="flex-grow: 1; flex-direction: row; width: 95%; height: 16.66%; justify-content: center; margin-top: -30px;">
+                    <engine:Toggle label="Baixa" name="togglelowquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
+                    <engine:Toggle label="Media" name="togglemediumquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
+                    <engine:Toggle label="Alta" name="togglehighquality" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13);" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-grow: 1; flex-direction: row; width: 100%; height: 16.66%; margin-bottom: 0; margin-top: 24px;">
+                    <engine:Label text="DALTONISMO" name="Label" style="flex-direction: row; flex-grow: 1; -unity-text-align: middle-left; font-size: 40px; color: rgb(114, 47, 15);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="VisualElement" style="flex-grow: 1; height: 50.02%; width: 100%; flex-direction: row; margin-top: -30px;">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Desligado" name="deslogado" class="item_daltonismo" />
+                        <engine:Toggle label="Deuteranopia" name="deuteranopia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Tritanomaly" name="tritanomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Protanomia" name="protanomia" class="item_daltonismo" />
+                        <engine:Toggle label="Deuteranomaly" name="deuteranomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Achromatopsia" name="achromatopsia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column; width: 33.33%; height: 100%; justify-content: center; align-items: flex-end; align-self: auto;">
+                        <engine:Toggle label="Protanomaly" name="protanomaly" class="item_daltonismo" />
+                        <engine:Toggle label="Tritanopia" name="tritanopia" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                        <engine:Toggle label="Achromatomaly" name="achromatomaly" class="item_daltonismo" style="-unity-text-align: middle-right; font-size: 40px; flex-grow: 1; color: rgb(93, 32, 13); width: auto; height: auto;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="panelbutton" style="flex-grow: 0; height: 170px; width: 100%; translate: 0 76px; flex-direction: row; justify-content: center; align-self: auto;">
+                <engine:Button name="buttondefault" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Image/Config/bt_padrao.png?fileID=2800000&amp;guid=e6521ee8e81171142b9cdea3bc13c55e&amp;type=3#bt_padrao&quot;); -unity-background-scale-mode: scale-to-fit; height: 159px; background-color: rgba(255, 255, 255, 0); border-top-width: 0; border-left-width: 0; border-bottom-width: 0; border-right-width: 0;" />
+                <engine:Button name="buttonsave" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Image/Config/bt_salvar.png?fileID=2800000&amp;guid=1091df140ecc8614f9097c290335c7f9&amp;type=3#bt_salvar&quot;); -unity-background-scale-mode: scale-to-fit; height: 159px; background-color: rgba(255, 255, 255, 0); border-top-width: 0; border-left-width: 0; border-bottom-width: 0; border-right-width: 0;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

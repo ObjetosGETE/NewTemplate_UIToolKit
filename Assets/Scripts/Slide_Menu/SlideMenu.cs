@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
-using static MyBox.EditorTools.MyGUI;
+
 
 public class SlideMenu : MonoBehaviour, IEventListener
 {
+    private VisualElement root;
 
-    private VisualElement graphicMenu;
     void Awake()
     {
         // Inicia a UI Document e encontra o componente Button dentro do documento da UI
@@ -16,13 +15,18 @@ public class SlideMenu : MonoBehaviour, IEventListener
             Debug.LogError("UIDocument não encontrado no GameObject.");
             return;
         }
-        graphicMenu = uiDocument.rootVisualElement.Q<VisualElement>("graphicmenu");
-        if (graphicMenu == null)
-        {
-            Debug.LogError("Menu de configuração gráfica não encontrado na árvore de elementos da UI.");
-            return;
-        }
-        graphicMenu.AddToClassList("graphicmenu_hide");
+        root = uiDocument.rootVisualElement;
+
+        var buttonGraph = root.Q<Button>("ButtonGraph");
+        buttonGraph.clicked += () => { var eventData = new Event("MostrarPainelGrafico", null); EventManager.Notify("MostrarPainelGrafico", eventData); };
+
+        var buttonAudio = root.Q<Button>("ButtonAudio");
+        buttonAudio.clicked += () => { var eventData = new Event("MostrarPainelAudio", null); EventManager.Notify("MostrarPainelAudio", eventData); };
+
+        var buttonReq = root.Q<Button>("ButtonReq");
+        buttonReq.clicked += () => { var eventData = new Event("MostrarPainelRequisitos", null); EventManager.Notify("MostrarPainelRequisitos", eventData); };
+
+        OcultarMenu();
     }
 
     void OnEnable()
@@ -30,8 +34,11 @@ public class SlideMenu : MonoBehaviour, IEventListener
         EventManager.Subscribe("MostrarPainelGrafico", this);
         EventManager.Subscribe("MostrarPainelAudio", this);
         EventManager.Subscribe("MostrarPainelRequisitos", this);
-        EventManager.Subscribe("VoltarGraficosAoPadrao", this);
-        EventManager.Subscribe("SalvarConfiguracaoGrafica", this);
+        EventManager.Subscribe("MostrarSlideMenu", this);  // Inscrever-se para mostrar o menu
+        EventManager.Subscribe("OcultarSlideMenu", this);  // Inscrever-se para ocultar o menu
+
+        //EventManager.Subscribe("VoltarGraficosAoPadrao", this);
+        //EventManager.Subscribe("SalvarConfiguracaoGrafica", this);
     }
 
     void OnDisable()
@@ -39,8 +46,13 @@ public class SlideMenu : MonoBehaviour, IEventListener
         EventManager.Unsubscribe("MostrarPainelGrafico", this);
         EventManager.Unsubscribe("MostrarPainelAudio", this);
         EventManager.Unsubscribe("MostrarPainelRequisitos", this);
-        EventManager.Unsubscribe("VoltarGraficosAoPadrao", this);
-        EventManager.Unsubscribe("SalvarConfiguracaoGrafica", this);
+        EventManager.Unsubscribe("MostrarSlideMenu", this);  // Cancelar a inscrição do evento
+        EventManager.Unsubscribe("OcultarSlideMenu", this);  // Cancelar a inscrição do evento
+
+        //EventManager.Unsubscribe("VoltarGraficosAoPadrao", this);
+        //EventManager.Unsubscribe("SalvarConfiguracaoGrafica", this);
+
+        
     }
 
     public void OnEventReceived(Event eventData)
@@ -48,7 +60,7 @@ public class SlideMenu : MonoBehaviour, IEventListener
         switch (eventData.EventType)
         {
             case "MostrarPainelGrafico":
-                graphicMenu.RemoveFromClassList("graphicmenu_hide");
+                //graphicMenu.RemoveFromClassList("graphicmenu_hide");
                 Debug.Log("Gráficos");
                 break;
             case "MostrarPainelAudio":
@@ -57,16 +69,36 @@ public class SlideMenu : MonoBehaviour, IEventListener
             case "MostrarPainelRequisitos":
                 Debug.Log("Requisitos");
                 break;
-            case "VoltarGraficosAoPadrao":
-                graphicMenu.AddToClassList("graphicmenu_hide");
-                Debug.Log("Voltar Gráficos ao Padrão");
+            case "MostrarSlideMenu":
+                MostrarMenu();
                 break;
-            case "SalvarConfiguracaoGrafica":
-                graphicMenu.AddToClassList("graphicmenu_hide");
-                Debug.Log("Salvar Configuração Gráfica");
+            case "OcultarSlideMenu":
+                OcultarMenu();
                 break;
+                //case "VoltarGraficosAoPadrao":
+                //    graphicMenu.AddToClassList("graphicmenu_hide");
+                //    Debug.Log("Voltar Gráficos ao Padrão");
+                //    break;
+                //case "SalvarConfiguracaoGrafica":
+                //    graphicMenu.AddToClassList("graphicmenu_hide");
+                //    Debug.Log("Salvar Configuração Gráfica");
+                //    break;
         }
     }
 
+    private void MostrarMenu()
+    {
+        if (root != null)
+        {
+            root.style.display = DisplayStyle.Flex; 
+        }
+    }
 
+    private void OcultarMenu()
+    {
+        if (root != null)
+        {
+            root.style.display = DisplayStyle.None; 
+        }
+    }
 }
